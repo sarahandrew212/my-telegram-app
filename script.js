@@ -1,6 +1,5 @@
 let coinCount = 0;
 
-// Initialize Telegram Web App
 const tg = window.Telegram.WebApp;
 
 // Fetch and display the username
@@ -14,11 +13,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+// Increment coin count when the Sagittarius logo is clicked
 document.getElementById("sagittariusIcon").addEventListener("click", function() {
     coinCount++;
     document.getElementById("coinCount").innerText = "Coins: " + coinCount;
 });
 
+// Function to show different sections based on the menu button clicked
 function showSection(section) {
     const sectionDiv = document.getElementById("section");
     sectionDiv.style.display = "block";
@@ -44,7 +45,10 @@ function showSection(section) {
             content = "Refer friends to earn bonus coins!";
             break;
         case 'wallet':
-            content = "Your wallet holds all your earned coins.";
+            content = `
+                <h2>Your Wallet</h2>
+                <p>You have earned a total of ${coinCount} coins!</p>
+            `;
             break;
     }
 
