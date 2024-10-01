@@ -1,5 +1,19 @@
 let coinCount = 0;
 
+// Initialize Telegram Web App
+const tg = window.Telegram.WebApp;
+
+// Fetch and display the username
+document.addEventListener("DOMContentLoaded", () => {
+    const usernameDiv = document.getElementById("username");
+    if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
+        const username = tg.initDataUnsafe.user.username || "Unknown User";
+        usernameDiv.innerText = "Welcome, @" + username;
+    } else {
+        usernameDiv.innerText = "Welcome, guest!";
+    }
+});
+
 document.getElementById("sagittariusIcon").addEventListener("click", function() {
     coinCount++;
     document.getElementById("coinCount").innerText = "Coins: " + coinCount;
